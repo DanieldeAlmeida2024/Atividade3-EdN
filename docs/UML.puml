@@ -1,0 +1,8 @@
+@startuml
+title Atividade3-EdN - fluxo conceitual
+actor Aluno
+component "Exercicio Python" as Exercicio
+component "Terminal" as Terminal
+Aluno --> Exercicio
+Exercicio --> Terminal
+@enduml

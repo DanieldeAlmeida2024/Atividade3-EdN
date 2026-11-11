@@ -1,3 +1,31 @@
+# Atividade3-EdN — exercícios de Python
+
+Exercícios de cálculo e classificação: área de circunferência, idade, IMC, temperatura, ano bissexto e comissão.
+
+## Requisitos
+Python 3.10+ e terminal local. Exercícios separados, não API/serviço em produção.
+
+## Executar um exercício
+```bash
+python areaDeCircunferencia.py
+```
+
+**Outros scripts:** `areaDeCircunferencia.py, calculadoraIMC.py, classificadorDeIdade.py, conversorTemperatura.py, verificadorAnoBissexto.py`.
+
+## Verificar sintaxe e documentação
+```bash
+python -m unittest discover -s tests -v
+```
+
+O teste acima **não** compara respostas dos exercícios aos enunciados; esses cenários precisam de testes de comportamento adicionais.
+
+## Navegação
+[Requisitos](docs/REQUISITOS.md), [estrutura](docs/ARQUITETURA.md), [UML](docs/UML.puml), [plano de testes](docs/PLANO_TESTES.md) e [guia de IA](AGENTS.md).
+
+---
+
+## Enunciados originais
+
 ## Atividade Prática 03
 ### 1- Área da circunferência
 
