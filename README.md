@@ -12,12 +12,20 @@ python areaDeCircunferencia.py
 
 **Outros scripts:** `areaDeCircunferencia.py, calculadoraIMC.py, classificadorDeIdade.py, conversorTemperatura.py, verificadorAnoBissexto.py`.
 
-## Verificar sintaxe e documentação
+## Executar testes de comportamento
 ```bash
 python -m unittest discover -s tests -v
 ```
 
-O teste acima **não** compara respostas dos exercícios aos enunciados; esses cenários precisam de testes de comportamento adicionais.
+Os testes exercitam o cálculo de área, as faixas de IMC e o calendário de anos bissextos, incluindo entradas inválidas e execução de CLI. Outros exercícios da atividade seguem pendentes de validação de comportamento.
+
+## Correções verificadas
+
+- **Área de círculo:** saída `A=12.5664` para raio 2, com **quatro casas decimais** conforme o enunciado; raio negativo e valores não finitos são rejeitados.
+- **IMC:** altura zero/negativa e peso inválido deixam de causar divisão por zero ou resultado sem sentido. As quatro faixas são testadas em seus limites; o exercício não substitui orientação clínica.
+- **Ano bissexto:** considera a exceção dos séculos (1900 não, 2000 sim) e rejeita anos não positivos.
+
+Comandos: `python -m unittest discover -s tests -v`. Esses três módulos possuem validação funcional; os demais scripts têm somente as verificações preexistentes.
 
 ## Navegação
 [Requisitos](docs/REQUISITOS.md), [estrutura](docs/ARQUITETURA.md), [UML](docs/UML.puml), [plano de testes](docs/PLANO_TESTES.md) e [guia de IA](AGENTS.md).
