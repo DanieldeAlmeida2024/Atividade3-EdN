@@ -11,3 +11,7 @@
 | [Testes](../testes/PLANO_DE_TESTES.md) | Atividade3-EdN-TST | 1.0.0 |
 
 **Histórico:** v1.0.0 cria inventário individual e rastreabilidade de casos. MAJOR=entrada/saída incompatível, MINOR=novo exercício/fluxo, PATCH=correção editorial. Revisões exigem SHA e resultados reais.
+
+## Reconciliação documental de 14/11/2026
+
+Recuperada modelagem específica de cada script e UML, com indicação explícita de que a revisão anterior é histórica. Preservados código, fixtures e testes já aprovados da main. O CI vigente, e não a matriz histórica, comprova execução.
