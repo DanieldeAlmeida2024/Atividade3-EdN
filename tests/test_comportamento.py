@@ -18,6 +18,7 @@ def importar(nome):
 area = importar("areaDeCircunferencia.py")
 imc = importar("calculadoraIMC.py")
 bissexto = importar("verificadorAnoBissexto.py")
+temperatura = importar("conversorTemperatura.py")
 
 
 class RegrasTestes(unittest.TestCase):
@@ -42,6 +43,30 @@ class RegrasTestes(unittest.TestCase):
                              (float('nan'), 2), (80, float('inf'))):
             with self.subTest(peso=peso, altura=altura), self.assertRaises(ValueError):
                 imc.calcular_imc(peso, altura)
+
+    def test_conversor_temperatura_zero_absoluto_e_tres_unidades(self):
+        self.assertAlmostEqual(32.0, temperatura.converter_temperaturas(1, 0)["Fahrenheit"])
+        self.assertAlmostEqual(273.15, temperatura.converter_temperaturas(1, 0)["Kelvin"])
+        self.assertAlmostEqual(100.0, temperatura.converter_temperaturas(2, 212)["Celsius"])
+        self.assertAlmostEqual(-273.15, temperatura.converter_temperaturas(3, 0)["Celsius"])
+        self.assertAlmostEqual(-459.67, temperatura.converter_temperaturas(3, 0)["Fahrenheit"])
+
+    def test_conversor_rejeita_estados_fisicamente_impossiveis(self):
+        for unidade, valor in ((1, -273.16), (2, -459.68), (3, -0.1),
+                               (1, float('nan')), (3, float('inf')), (True, 100),
+                               (4, 20), (1, True), (1, 1e308)):
+            with self.subTest(unidade=unidade, valor=valor):
+                with self.assertRaises(ValueError):
+                    temperatura.converter_temperaturas(unidade, valor)
+
+    def test_cli_conversor_trata_entrada_invalida_sem_traceback(self):
+        resultado = subprocess.run(
+            [sys.executable, str(ROOT / "conversorTemperatura.py")],
+            input="3\\n-5\\n", capture_output=True, text=True, timeout=10
+        )
+        self.assertNotEqual(0, resultado.returncode)
+        self.assertIn("Erro:", resultado.stderr)
+        self.assertNotIn("Traceback", resultado.stderr)
 
     def test_bissexto_seculo_e_ano_comum(self):
         self.assertTrue(bissexto.eh_bissexto(2000))
